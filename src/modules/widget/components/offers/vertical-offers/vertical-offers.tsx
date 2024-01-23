@@ -9,6 +9,7 @@ import { AppDispatch } from '../../../../../store';
 import { toggleIsCollapsedCheckoutPanelOpen } from '../../../../../slices/checkout-slice';
 
 import './vertical-offers.less';
+import { setSelection } from '../../../../../slices/selection-slice';
 
 interface OfferView {
     offers: PrizeoutOffer[];
@@ -25,6 +26,12 @@ const VerticalOffers: React.FC<OfferView> = ({ offers, viewSettings }): React.Re
         if (isCheckoutPanelCollapsedView) {
             dispatch(toggleIsCollapsedCheckoutPanelOpen());
         }
+        dispatch(
+            setSelection({
+                giftcard_list: offer.giftcard_list,
+                name: offer.name,
+            }),
+        );
     };
 
     const returnOffers = () => {
