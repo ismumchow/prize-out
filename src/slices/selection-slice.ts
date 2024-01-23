@@ -4,6 +4,8 @@ import type { RootState } from '../store';
 export interface GiftCardList {
     checkout_value_id: string;
     cost_in_cents: number;
+    display_bonus?: number;
+    display_monetary_bonus?: number;
     value_in_cents: number;
 }
 
