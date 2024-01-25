@@ -25,14 +25,12 @@
     background-color: gray; // default background for unselected items
     border-radius: 10%;
     padding: 10px;
-	font-weight: 600;
-    
+    font-weight: 600;
 }
 
 .price_item--selected {
     background-color: var(--color-primary); // background for selected item
-	color:#dddddd;
-;
+    color: white;
 }
 
 .price_item--unselected {
@@ -40,8 +38,8 @@
 }
 
 .title {
-	font-weight:600;
-	font-size: 20px;
+    font-weight: 600;
+    font-size: 20px;
 }
 
 .price_details {
@@ -49,19 +47,26 @@
     padding: 15px;
     background-color: white;
     border: 1px solid #ddd;
-	border-radius: 15px;
-	font-weight: bold;
-	font-size: 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0; // Start with div hidden
+    transform: translateY(-10px); // Start slightly above its final position
 }
 
 .flex-between {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	padding-top: 2px;
-	padding-bottom: 2px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .primary-color {
-	color : var(--color-primary)
+    color: var(--color-primary);
+}
+.price_details--visible {
+    opacity: 1;
+    transform: translateY(0);
 }

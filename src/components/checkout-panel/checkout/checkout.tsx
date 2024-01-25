@@ -19,6 +19,11 @@ const CheckoutPanelView: React.FC = (): React.ReactElement => {
             'price_item--unselected': key !== selectedKey,
         });
 
+    useEffect(() => {
+        setSelectedItemDetails(null);
+        setSelectedKey(null);
+    }, [currentName]);
+
     const prices = useMemo(
         () =>
             currentGiftCardList.map((item) => ({
@@ -29,13 +34,15 @@ const CheckoutPanelView: React.FC = (): React.ReactElement => {
     );
 
     const handleClick = (key: string) => {
-        if (selectedKey === key) {
-            setSelectedKey(null);
-            setSelectedItemDetails(null);
-        } else {
+        if (selectedKey !== key) {
+            // If a different item is clicked, select it and show its details
             const selectedItem = currentGiftCardList.find((item) => item.checkout_value_id === key);
             setSelectedKey(key);
-            setSelectedItemDetails(selectedItem || null);
+            setSelectedItemDetails(selectedItem);
+        } else if (selectedKey === key) {
+            // If the same item is clicked again, unselect it and clear details
+            setSelectedKey(null);
+            setSelectedItemDetails(null);
         }
     };
 
@@ -57,7 +64,7 @@ const CheckoutPanelView: React.FC = (): React.ReactElement => {
                     </div>
 
                     {selectedItemDetails && (
-                        <div className="price_details">
+                        <div className={`price_details ${selectedItemDetails ? 'price_details--visible' : ''}`}>
                             <div className="flex-between">
                                 <span> Redemption Amount </span>
                                 <span> ${(selectedItemDetails.cost_in_cents / 100).toFixed(2)} </span>
@@ -73,8 +80,8 @@ const CheckoutPanelView: React.FC = (): React.ReactElement => {
                                 </span>
                             </div>
                             <div className="flex-between">
-                                <span> Value in Cents: </span>
-                                <span> ${(selectedItemDetails.value_in_cents / 10).toFixed(2)} </span>
+                                <span> You Get: </span>
+                                <span> ${(selectedItemDetails.value_in_cents / 100).toFixed(2)} </span>
                             </div>
                         </div>
                     )}
