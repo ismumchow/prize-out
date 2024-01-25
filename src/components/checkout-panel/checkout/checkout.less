@@ -1,11 +1,72 @@
-@import "../../../utils/styles/utility.less";
+@import '../../../utils/styles/utility.less';
 
 .checkout {
-	padding: var(--space-inner);
-	
-	&__brand {
-		overflow: auto;
-	}
+    padding: var(--space-inner);
+
+    &__brand {
+        overflow: auto;
+    }
 }
 
+.price_grid {
+    padding-top: 2vh;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Creates 4 columns */
+    grid-template-rows: repeat(2, auto); /* Creates 2 rows */
+    gap: 10px; /* Adjust the gap between grid items */
+    /* Add any additional styling as needed */
+}
 
+.price_item {
+    display: flex;
+    user-select: none;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: gray; // default background for unselected items
+    border-radius: 10%;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.price_item--selected {
+    background-color: var(--color-primary); // background for selected item
+    color: white;
+}
+
+.price_item--unselected {
+    background-color: #dddddd;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.price_details {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0; // Start with div hidden
+    transform: translateY(-10px); // Start slightly above its final position
+}
+
+.flex-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.primary-color {
+    color: var(--color-primary);
+}
+.price_details--visible {
+    opacity: 1;
+    transform: translateY(0);
+}

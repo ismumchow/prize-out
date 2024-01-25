@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: {
-        index: './src/index.tsx'
+        index: './src/index.tsx',
     },
     output: {
         filename: '[name].[hash:20].js',
@@ -18,33 +18,24 @@ module.exports = {
                 use: 'ts-loader',
                 exclude: /node_modules/,
             },
-			{
+            {
                 test: /\.(js|jsx)$/,
                 enforce: 'pre',
-				// use: ['source-map-loader'],
-				loader: 'babel-loader',
+                // use: ['source-map-loader'],
+                loader: 'babel-loader',
                 exclude: /node_modules/,
                 options: {
-                    presets: [
-                        '@babel/preset-env',
-                        '@babel/preset-react'
-					],
-					'plugins': [
-						'@babel/plugin-proposal-class-properties'
-					]
-                }
+                    presets: ['@babel/preset-env', '@babel/preset-react'],
+                    plugins: ['@babel/plugin-proposal-class-properties'],
+                },
             },
-			{
-				test: /\.(less|css)$/,
-				loaders: [
-					'style-loader', 
-					'css-loader', 
-					'less-loader'
-				]
-			}
-        ]
-	},
-	resolve: {
+            {
+                test: /\.(less|css)$/,
+                loaders: ['style-loader', 'css-loader', 'less-loader'],
+            },
+        ],
+    },
+    resolve: {
         extensions: ['.tsx', '.ts', '.jsx', '.js'],
         alias: {
             dist: path.join(__dirname, './dist'),
@@ -59,5 +50,5 @@ module.exports = {
             chunks: ['index'],
             filename: 'index.html',
         }),
-    ]
+    ],
 };
