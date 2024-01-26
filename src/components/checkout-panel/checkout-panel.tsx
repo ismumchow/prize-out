@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Classnames from 'classnames';
 import CheckoutPanelView from './checkout/checkout';
 import CheckoutConfirmationPanelView from './checkout-confirmation/checkout-confirmation';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks/hooks';
 import { selectIsCheckoutPanelCollapsed } from '../../slices/common-slice';
 import useTransition from 'react-transition-state';
 import { useDispatch } from 'react-redux';

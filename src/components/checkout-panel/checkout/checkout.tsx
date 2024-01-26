@@ -2,14 +2,15 @@ import React, { useEffect, useMemo, useState } from 'react';
 import checkoutPanelViewWrapper from '../view-wrapper';
 import CheckoutButton from './checkout-button';
 import Classnames from 'classnames';
+import { formatCurrency, formatBonus } from '../../../utils/functions/converters';
 
 import './checkout.less';
-import { useAppSelector } from '../../../hooks';
-import { selectGiftCardList, selectName } from '../../../slices/selection-slice';
+import { useAppSelector } from '../../../hooks/hooks';
+import { selectGiftCardList, selectName, GiftCardList } from '../../../slices/selection-slice';
 
 const CheckoutPanelView: React.FC = (): React.ReactElement => {
     const [selectedKey, setSelectedKey] = useState<string | null>(null);
-    const [selectedItemDetails, setSelectedItemDetails] = useState(null);
+    const [selectedItemDetails, setSelectedItemDetails] = useState<GiftCardList>(null);
 
     const currentGiftCardList = useAppSelector(selectGiftCardList);
     const currentName = useAppSelector(selectName);
@@ -35,12 +36,10 @@ const CheckoutPanelView: React.FC = (): React.ReactElement => {
 
     const handleClick = (key: string) => {
         if (selectedKey !== key) {
-            // If a different item is clicked, select it and show its details
             const selectedItem = currentGiftCardList.find((item) => item.checkout_value_id === key);
             setSelectedKey(key);
             setSelectedItemDetails(selectedItem);
         } else if (selectedKey === key) {
-            // If the same item is clicked again, unselect it and clear details
             setSelectedKey(null);
             setSelectedItemDetails(null);
         }
@@ -67,28 +66,24 @@ const CheckoutPanelView: React.FC = (): React.ReactElement => {
                         <div className={`price_details ${selectedItemDetails ? 'price_details--visible' : ''}`}>
                             <div className="flex-between">
                                 <span> Redemption Amount </span>
-                                <span> ${(selectedItemDetails.cost_in_cents / 100).toFixed(2)} </span>
+                                <span> {formatCurrency(selectedItemDetails.cost_in_cents)} </span>
                             </div>
                             <div className="flex-between primary-color">
                                 <span> Prizeout Bonus (+{selectedItemDetails.display_bonus}%) </span>
                                 <span>
-                                    $
-                                    {(
-                                        (selectedItemDetails.display_bonus * selectedItemDetails.cost_in_cents) /
-                                        10000
-                                    ).toFixed(2)}
+                                    {formatBonus(selectedItemDetails.display_bonus * selectedItemDetails.cost_in_cents)}
                                 </span>
                             </div>
                             <div className="flex-between">
                                 <span> You Get: </span>
-                                <span> ${(selectedItemDetails.value_in_cents / 100).toFixed(2)} </span>
+                                <span> {formatCurrency(selectedItemDetails.value_in_cents)}</span>
                             </div>
                         </div>
                     )}
                 </div>
                 <div className="grid__item">
                     <section className="checkout__calculation">
-                        <CheckoutButton />
+                        <CheckoutButton currentName={currentName} selectedItem={selectedItemDetails} />
                     </section>
                 </div>
             </div>

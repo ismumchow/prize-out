@@ -1,6 +1,6 @@
 import React from 'react';
 import Classnames from 'classnames';
-import { useAppSelector } from '../../hooks';
+import { useAppSelector } from '../../hooks/hooks';
 import { selectLoading, selectCheckoutView, setCheckoutView, ViewEnum } from '../../slices/checkout-slice';
 
 import { useDispatch } from 'react-redux';

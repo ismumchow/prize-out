@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "npx eslint ./src --fix",
     "start": "webpack-dev-server --config webpack.dev.js --port 8069 --host 0.0.0.0",
+    "start:server": "json-server --watch db.json port 3005",
     "test": "jest --config ./jest.config.js --runInBand --no-cache",
     "build": "webpack --config webpack.prod.js",
     "prepare": "husky install"
@@ -22,11 +23,12 @@
     "@sentry/react": "6.9.0",
     "@sentry/tracing": "6.9.0",
     "@trendyol-js/react-carousel": "^2.0.1",
-    "axios": "0.21.1",
+    "axios": "^0.21.1",
     "babel-plugin-prismjs": "2.0.1",
     "common-tags": "1.8.0",
     "html-react-parser": "1.2.4",
     "js-cookie": "^3.0.1",
+    "json-server": "^1.0.0-alpha.22",
     "lodash": "4.17.21",
     "normalize.css": "8.0.1",
     "prismjs": "1.23.0",

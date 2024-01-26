@@ -1,0 +1,32 @@
+{
+  "selections": [
+    {
+      "id": "3c87",
+      "checkout_value_id": "32760be1-6c3e-478a-b3ff-42d362240932",
+      "cost_in_cents": 2940,
+      "name": "SiriusXM",
+      "value_in_cents": 3000
+    },
+    {
+      "id": "230d",
+      "checkout_value_id": "9ec77bb8-215c-45e9-88a9-d68f4b435e92",
+      "cost_in_cents": 15000,
+      "name": "Instacart",
+      "value_in_cents": 15000
+    },
+    {
+      "id": "76b8",
+      "checkout_value_id": "9ec77bb8-215c-45e9-88a9-d68f4b435e92",
+      "cost_in_cents": 15000,
+      "name": "Instacart",
+      "value_in_cents": 15000
+    },
+    {
+      "id": "b6c9",
+      "checkout_value_id": "9ec77bb8-215c-45e9-88a9-d68f4b435e92",
+      "cost_in_cents": 15000,
+      "name": "Instacart",
+      "value_in_cents": 15000
+    }
+  ]
+}
