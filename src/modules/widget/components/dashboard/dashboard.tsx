@@ -3,7 +3,7 @@ import Classnames from 'classnames';
 import { Footer, Header } from '../../../../components/common';
 import { CheckoutPanel } from '../../../../components/checkout-panel/checkout-panel';
 import DisplayOffers from '../offers/display-offers';
-import { useAppSelector } from '../../../../hooks';
+import { useAppSelector } from '../../../../hooks/hooks';
 import { selectIsCheckoutPanelCollapsed } from '../../../../slices/common-slice';
 
 import './dashboard.less';

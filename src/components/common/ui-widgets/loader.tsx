@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { selectLoading } from '../../../slices/common-slice';
-import { useAppSelector } from '../../../hooks';
+import { useAppSelector } from '../../../hooks/hooks';
 import './loader.less';
 
 export const Loader: React.FC = (): React.ReactElement => {

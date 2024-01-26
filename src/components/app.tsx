@@ -4,7 +4,7 @@ import { Widget } from '../modules/widget';
 import { windowResizeHandler } from '../utils/event-handlers';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../store';
-import { useAppSelector } from '../hooks';
+import { useAppSelector } from '../hooks/hooks';
 import {
     selectIsCheckoutPanelCollapsed,
     selectIsMobilePortrait,

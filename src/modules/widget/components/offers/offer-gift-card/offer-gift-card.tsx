@@ -4,8 +4,8 @@ import { GiftCard, BonusTag } from '../../../../../components/common/';
 import { PrizeoutOffer } from '../../../../../slices/offers-slice';
 
 import './offer-gift-card.less';
-import { useAppSelector } from '../../../../../hooks';
-import { selectGiftCardList, selectName } from '../../../../../slices/selection-slice';
+import { useAppSelector } from '../../../../../hooks/hooks';
+import { selectName } from '../../../../../slices/selection-slice';
 
 interface OfferGiftCardProps {
     offer: PrizeoutOffer;
@@ -13,8 +13,6 @@ interface OfferGiftCardProps {
 }
 
 export const OfferGiftCard: React.FC<OfferGiftCardProps> = ({ offer, onClickHandler }): React.ReactElement => {
-    let activeOfferId;
-
     const currentName = useAppSelector(selectName);
 
     const firstGiftCard = offer.giftcard_list[0];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { v4 as uuid_v4 } from 'uuid';
-import { useAppSelector } from '../../../../hooks';
+import { useAppSelector } from '../../../../hooks/hooks';
 import { PrizeoutOfferViews, selectOffers } from '../../../../slices/offers-slice';
 import VerticalOffers from './vertical-offers/vertical-offers';
 
