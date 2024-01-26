@@ -5,7 +5,7 @@ import { PrizeoutOffer } from '../../../../../slices/offers-slice';
 
 import './offer-gift-card.less';
 import { useAppSelector } from '../../../../../hooks/hooks';
-import {  selectName } from '../../../../../slices/selection-slice';
+import { selectName } from '../../../../../slices/selection-slice';
 
 interface OfferGiftCardProps {
     offer: PrizeoutOffer;

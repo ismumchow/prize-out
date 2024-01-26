@@ -11,7 +11,7 @@ export interface RedeemPayload {
 
 export interface RedeemInitialState {
     isLoading: boolean;
-    error: any
+    error: any;
     data: RedeemPayload[];
 }
 
