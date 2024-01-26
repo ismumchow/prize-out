@@ -1,93 +1,32 @@
-# Prizeout Applicant Take Home Test
 
-## Instructions
-This take-home challenge is geared toward testing one's ability to code in a React application. The application is built using TypeScript, React, Redux Toolkit, JSX and Less CSS.
+# Added Functionality that Dispatches an Action when User Clicks Checkout Button
 
-Starting the application will render a list of gift card offers available to a given user.
+## Introduction
+This README outlines the newly added features to our application, specifically focusing on the functionality associated with the checkout process. These enhancements aim to improve user experience and system robustness.
 
-**Please complete the following tasks:**
+## Features
 
-- When clicking on a gift card offer in the grid, please set a blue border around the offer card so the user knows which one is selected.
+1. **Disabled Checkout Button without Selection**: The checkout button remains disabled until the user makes a selection. This ensures that no invalid or empty requests are sent to the server.
 
-- When clicking on an offer, please populate the right sidebar with the selected offers information. It should display the gift card, gift card name, a list of available cost options for the gift card and the Prizeout button. 
+2. **New Redux Slice and Thunk for POST Request**: Implemented a new slice and thunk in our Redux store. This addition handles the POST request to the server when a user completes their selection and proceeds to checkout.
 
-- A user should be able to select a value for the gift card they would like to purchase.
+3. **Checkout Button Action Dispatch**: Upon clicking the checkout button, an action is dispatched with a payload containing the user's selection. This integration ensures seamless data flow and state management.
 
-- Clicking the Prizeout button should trigger an api call to the server. You can mock a successful response from the server. The request should include all viable information inregards to the offer that has been selected and the gift card value that was chosen. The following values are required by the checkout endpoint: `checkout_value_id`, `cost_in_cents`, `name`, `value_in_cents`. 
+4. **Artificial Delay with Spinner**: To emulate a real-time server response, we have introduced an artificial delay. During this period, a spinner is displayed on the checkout button, enhancing the user interface and mimicking a real server request wait time.
 
-- Style the list of available cost options for the gift card according to the attached design:
+## Testing Procedure
 
-![Prizeout calculation](https://assets.prizeout.com/temp/code-challenge/calculation-section.png)
+To fully test and experience the new features, follow the steps below:
 
+1. **Start the Mock Server**: Run `npm start:server`. This command initiates a mock server which simulates the backend environment.
 
+2. **Make a Selection**: In the application, navigate to the checkout panel. Choose an item from the available gift card selections. Once a selection is made, the previously disabled checkout button will become active.
 
-## Offer Schema Example
+3. **Observe Checkout Process**: Click the now-active checkout button. Observe that a load spinner appears, simulating the processing of your request. This spinner emulates a real API call, complete with a fake 1-second delay implemented using `setTimeout`.
 
-```
-{
-    checkout_hero_url: null,
-    currency_code: 'USD',
-    description: '0',
-    giftcard_list: [  // This is a list of cost options available
-        {
-            checkout_value_id: 'd4ec7fb1-f214-4f76-9163-92a6cc6ef3a1',
-            cost_in_cents: 980,
-            display_bonus: 2.04,
-            display_monetary_bonus: null,
-            value_in_cents: 1000
-        },
-        {
-            checkout_value_id: '51df3cec-4277-4327-acd9-8c1e09c6c45e',
-            cost_in_cents: 2450,
-            display_bonus: 2.04,
-            display_monetary_bonus: null,
-            value_in_cents: 2500
-        },
-        {
-            checkout_value_id: '7257dd8d-fdf8-45de-abdc-7d565dd0d7e1',
-            cost_in_cents: 4900,
-            display_bonus: 2.04,
-            display_monetary_bonus: null,
-            value_in_cents: 5000
-        }
-    ],
-    image_url: 'https://d13080yemosbe2.cloudfront.net/Images/GiftCardFaceplates/External/EBOOKUL_fp01.png',
-    is_enabled: true,
-    logomark_url: null,
-    name: 'Unlimited eBooks',
-    stores: [],
-    support_creative_list: [],
-    tag: null
-}
-```
+4. **Check Database Update**: Upon completion of the fake request, the `db.json` file is updated. The update includes details of your selection, such as `checkout_value_id`, `cost_in_cents`, `name`, and `value_in_cents`.
 
-## Initialization
-`npm i` to install dependancies.
-`npm start` to start the app.
+5. **Verify Functionalities**: Ensure that all the above features work as intended. The button should remain disabled until a selection is made, and upon clicking, the spinner should appear, followed by an update in the `db.json`.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:8069](http://localhost:8069) to view it in the browser.
-
-The page will reload if you make edits.
-
-### `npm test`
-
-Launches the test runner in the console.
-
-### `npm run lint`
-
-This will lint all of the ts/tsx files in the application. It will auto fix any issues and report on the findings of any outstanding issues that cannot be fixed automatically.
-
-### `npm run build`
-
-Builds the app for production to the `dist` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.
-
+Screen Shot Below: 
+![image](https://github.com/ismumchow/prize-out/assets/24498139/c085654e-fb57-49f0-9555-603627f656ab)
